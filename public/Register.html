@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Corben" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
+	</head>
+	
+	<body>
+	
+		<button class="log" onclick="document.getElementById('id01').style.display='block'">Login</button>
+		<!--Modal-->
+		<div id="id01" class="modal">
+		<span onclick="document.getElementById('id01').style.display='none'"
+				class ="close" title="Close">&times;</span>
+				
+			<form class="modal-content animate" action="/registerinfo.php">
+			
+				<div class="container">
+					<h1 style="font-size:200%;text-align:left;margin-top:0;margin-left:0;margin-bottom:20px;">The Samos<span style="color:#70dbdb">App</span></h1>
+					<label><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="uname" required> <br/>
+
+					<label><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" required> &nbsp &nbsp
+
+					<button type="submit">Login</button>
+				</div>
+
+				<div class="container">
+					<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Close</button>
+					<span class="psw"><a class = "top" href="Register.html">Register</a></span>
+
+				</div>
+			</form>
+		</div>
+	
+	<!--Title-->
+		<h1>
+		The Samos<span style="color:#70dbdb">App</span>
+		</h1>
+			
+	<!--NavBar-->
+		<ul class="navbar">
+			<li><a  href="index.html">Map</a></li>
+			<li><a href="Schedule.html">Scheddy</a></li>
+		</ul>
+		
+		<form class="reg" name="input" action="register.php" method="post">
+			<b>Name: &nbsp <input type="text" name="username" maxlength=50> <br/>
+			<b>Reenter Name: &nbsp <input type="text" name="username2" maxlength=50> <br/>
+			<b>Email: &nbsp <input type="text" name="email" maxlength=50> <br/>
+			<b>Reenter Email: &nbsp <input type="text" name="email2" maxlength=50> <br/>
+			<b>Password: &nbsp <input type="text" name="password" maxlength=50><br/>
+			<b>Reenter Password: &nbsp <input type="text" name="password2" maxlength=50><br/> 
+			Promise not to enter false information about samosa sales?
+			<input type="radio" name="info" value="yes">Yes
+			<input type="radio" name="info" value="no">No<br/>
+			Would you like to receive our newsletters?
+			<input type="radio" name="newsletter" value="yes">Yes<br/>
+			<input type="submit" value="Register">
+			
+		</form>
+
+	<!--Info/Credit Section-->
+	<div>
+		<table class = "main">
+			
+			<tr>
+				<th><span >
+				The SamosApp is a revolutionary piece of software that
+				helps brings samosas to the people. TO YOU.
+				
+				Lorem Ipsum is simply dummy text of the printing and 
+				typesetting industry. Lorem Ipsum has been the industry's 
+				standard dummy text ever since the 1500s, when an unknown printer 
+				took a galley of type and scrambled it to make a type 
+				specimen book.</span></th>
+				
+			</tr>
+			<tr>
+				<th><span style="font-size:100%" >Created By: <span style="color:#70dbdb"><a class = "bot" href="#" target="_blank" style="text-decoration:none">Kelly Agnew</a>, <a class = "bot" href="#" target="_blank" style="text-decoration:none">Kalin Otto</a></span></span></th>
+				
+			</tr>
+		</table>
+	</div>
+	</body>
+	
+</html>
