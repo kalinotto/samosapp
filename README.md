@@ -1,0 +1,2 @@
+# samosapp
+NOT LUCRATIVE DO NOT LOOK
