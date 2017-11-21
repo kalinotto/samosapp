@@ -14,7 +14,7 @@
 		<span onclick="document.getElementById('id01').style.display='none'"
 				class ="close" title="Close">&times;</span>
 				
-			<form class="modal-content animate" action="/registerinfo.php">
+			<form class="modal-content animate" method="post" action="login.php">
 			
 				<div class="container">
 					<h1 style="font-size:200%;text-align:left;margin-top:0;margin-left:0;margin-bottom:20px;">The Samos<span style="color:#70dbdb">App</span></h1>
@@ -24,7 +24,7 @@
 					<label><b>Password</b></label>
 					<input type="password" placeholder="Enter Password" name="psw" required> &nbsp &nbsp
 
-					<button type="submit">Login</button>
+					<button type="submit" name="login">Login</button>
 				</div>
 
 				<div class="container">
@@ -46,11 +46,11 @@
 			<li><a href="Schedule.html">Scheddy</a></li>
 		</ul>
 		
-		<form class="reg" name="input" action="register.php" method="post">
-			<b>Name: &nbsp <input type="text" name="username" maxlength=50> <br/>
-			<b>Reenter Name: &nbsp <input type="text" name="username2" maxlength=50> <br/>
-			<b>Email: &nbsp <input type="text" name="email" maxlength=50> <br/>
-			<b>Reenter Email: &nbsp <input type="text" name="email2" maxlength=50> <br/>
+		<form class="reg" name="input" action="server.php" method="post">
+			<!-- display the registration validation error messages here-->
+			<?php include('errors.php'); ?>
+			<b>Username: &nbsp <input type="text" name="username" maxlength=50 value="<?php echo $username;?>"> <br/>
+			<b>Email: &nbsp <input type="text" name="email" maxlength=50 value="<?php echo $email;?>"> <br/>
 			<b>Password: &nbsp <input type="text" name="password" maxlength=50><br/>
 			<b>Reenter Password: &nbsp <input type="text" name="password2" maxlength=50><br/> 
 			Promise not to enter false information about samosa sales?
@@ -58,7 +58,8 @@
 			<input type="radio" name="info" value="no">No<br/>
 			Would you like to receive our newsletters?
 			<input type="radio" name="newsletter" value="yes">Yes<br/>
-			<input type="submit" value="Register">
+			<input type="submit" name = "register" value="Register">
+	
 			
 		</form>
 
