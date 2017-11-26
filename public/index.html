@@ -1,3 +1,5 @@
+<?php include('registration.php'); ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -47,6 +49,14 @@
 			<li><a class="active" href="#">Map</a></li>
 			
 			<li><a href="Schedule.html">Scheddy</a></li>
+			
+			<?php if(isset($_SESSION['success'])): ?>
+				<?php echo $_SESSION['success'];
+					unset($_SESSION['success'];
+				?>
+				<li><a href="Report.html">Report Sale</a></li>
+
+			<?php  endif ?>
 		</ul>
 		
 	<!--MapInfo-->
@@ -61,16 +71,81 @@
 		
 		
 		<script>
+		
+		var customLabel={ //if at some point we want to extend to other types of sales
+			samosa: {
+			label: 'S'
+			}
+		
+		};
+		
+		
 		function initMap(){
 			var mcEng = {lat:45.506164,lng:-73.576461};
+			
 			var map = new google.maps.Map(document.getElementById('map'),{
 				zoom: 16, center:{lat:45.505247,lng:-73.577337}
 			});
-			var mcEngMarker = new google.maps.Marker({
-				position: mcEng,
-				map: map
-			});
+			var infoWindow = new google.maps.InfoWindow;
+			
+			downloadUrl('getSales.php', function(data){
+				var xml = data.responseXML;
+				var markers = xml.documentElement.getElementsByTagName('marker');
+				Array.prototype.forEach.call(markers, function(markerElem){
+					var id = markerElem.getAttribute('id');
+					var name = markerElem.getAttribute('name');
+					var location = markerElem.getAttribute('location');
+					var start = markerElem.getAttribute('start');
+					var end = markerElem.getAttribute('end');
+					
+					var point = new google.maps.LatLng(
+						parseFloat(markerElem.getAttribute('lat')),
+						parseFloat(markerElem.getAttribute('lng')));
+					
+					var infoWindowContent = document.createElement('div');
+					var strong = document.createElement('strong');
+					strong.textContent = name;
+					infoWindowContent.appendChild(strong);
+					infoWindowContent.appendChild(document.createElement('br'));
+					
+					var text = document.createElement('text');
+					text.textContent = location;
+					infoWindowContent.appendChild(text);
+					
+					var icon = customLabel{};
+					var marker = new google.maps.Marker({
+						infoWindow.setContent(infoWindowContent);
+						infoWindow.open(map, marker);
+					});
+					marker.addListener('click', function(){
+						infoWindow.setContent(infoWindowContent);
+						infoWindow.open(map, marker);
+					
+					});
+				
+				
+				});
+	
+			});	
 		}
+		
+		function downloadUrl(url, callback){
+			var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
+				
+			request.onreadystatechange = function(){
+				if(request.readystate == 4){
+					request.onreadystatechange = doNothing;
+					callback(request, request.status);
+				}
+			};
+			request.open('GET', url, true);
+			request.send(null);
+		}
+		function doNothing() {}
+		
+		
 		</script>
 		<script async defer 
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtjGZoOnPsz1k1NTW-Um5oaCTmPn5_3QM&callback=initMap">
@@ -89,11 +164,8 @@
 				The SamosApp is a revolutionary piece of software that
 				helps brings samosas to the people. TO YOU.
 				
-				Lorem Ipsum is simply dummy text of the printing and 
-				typesetting industry. Lorem Ipsum has been the industry's 
-				standard dummy text ever since the 1500s, when an unknown printer 
-				took a galley of type and scrambled it to make a type 
-				specimen book.</span></th>
+				The creators take no responsibility for false information
+				reported on this website. Use at your own risk.</span></th>
 				
 			</tr>
 			<tr>
