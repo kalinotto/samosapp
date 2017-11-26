@@ -46,11 +46,11 @@
 			<li><a href="Schedule.html">Scheddy</a></li>
 		</ul>
 		
-		<form class="reg" name="input" action="server.php" method="post">
+		<form class="reg" name="input" action="registration.php" method="post">
 			<!-- display the registration validation error messages here-->
 			<?php include('errors.php'); ?>
-			<b>Username: &nbsp <input type="text" name="username" maxlength=50 value="<?php echo $username;?>"> <br/>
-			<b>Email: &nbsp <input type="text" name="email" maxlength=50 value="<?php echo $email;?>"> <br/>
+			<b>Username: &nbsp <input type="text" name="username" maxlength=50> <br/>
+			<b>Email: &nbsp <input type="text" name="email" maxlength=50> <br/>
 			<b>Password: &nbsp <input type="text" name="password" maxlength=50><br/>
 			<b>Reenter Password: &nbsp <input type="text" name="password2" maxlength=50><br/> 
 			Promise not to enter false information about samosa sales?
@@ -72,11 +72,8 @@
 				The SamosApp is a revolutionary piece of software that
 				helps brings samosas to the people. TO YOU.
 				
-				Lorem Ipsum is simply dummy text of the printing and 
-				typesetting industry. Lorem Ipsum has been the industry's 
-				standard dummy text ever since the 1500s, when an unknown printer 
-				took a galley of type and scrambled it to make a type 
-				specimen book.</span></th>
+				The creators take no responsibility for false information
+				reported on this website. Use at your own risk.</span></th>
 				
 			</tr>
 			<tr>
