@@ -69,16 +69,7 @@
 		<h3></h3>
 		<div id="map"></div>
 		
-		
 		<script>
-		
-		var customLabel={ //if at some point we want to extend to other types of sales
-			samosa: {
-			label: 'S'
-			}
-		
-		};
-		
 		
 		function initMap(){
 			var mcEng = {lat:45.506164,lng:-73.576461};
@@ -86,6 +77,7 @@
 			var map = new google.maps.Map(document.getElementById('map'),{
 				zoom: 16, center:{lat:45.505247,lng:-73.577337}
 			});
+
 			var infoWindow = new google.maps.InfoWindow;
 			
 			downloadUrl('getSales.php', function(data){
@@ -112,10 +104,9 @@
 					text.textContent = location;
 					infoWindowContent.appendChild(text);
 					
-					var icon = customLabel{};
 					var marker = new google.maps.Marker({
-						infoWindow.setContent(infoWindowContent);
-						infoWindow.open(map, marker);
+						position: point,
+						map: map
 					});
 					marker.addListener('click', function(){
 						infoWindow.setContent(infoWindowContent);
@@ -131,19 +122,16 @@
 		
 		function downloadUrl(url, callback){
 			var request = window.ActiveXObject ?
-				new ActiveXObject('Microsoft.XMLHTTP') :
-				new XMLHttpRequest;
+				new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest;
 				
 			request.onreadystatechange = function(){
-				if(request.readystate == 4){
-					request.onreadystatechange = doNothing;
-					callback(request, request.status);
+				if(request.readyState == 4){
+					callback(request);
 				}
 			};
 			request.open('GET', url, true);
 			request.send(null);
 		}
-		function doNothing() {}
 		
 		
 		</script>
