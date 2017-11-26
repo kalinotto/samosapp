@@ -59,12 +59,7 @@
 			<?php  endif ?>
 		</ul>
 		
-	<!--MapInfo-->
-		<div id="side" class="sidebar">
-		
-			<h2 class="side">About this sale</h2>
 	
-		</div>
 	<!--Map-->
 		<h3></h3>
 		<div id="map"></div>
@@ -103,6 +98,22 @@
 					var text = document.createElement('text');
 					text.textContent = location;
 					infoWindowContent.appendChild(text);
+					infoWindowContent.appendChild(document.createElement('br'));
+
+					var start = document.createElement('start');
+					start.textContent = start;
+					infoWindowContent.appendChild(text);
+
+					var mid = document.createElement('mid');
+					mid.textContent = " to ";
+					infoWindowContent.appendChild(text);
+
+					var end = document.createElement('end');
+					end.textContent = end;
+					infoWindowContent.appendChild(text);
+
+					
+					infoWindowContent.appendChild(start);
 					
 					var marker = new google.maps.Marker({
 						position: point,
