@@ -101,17 +101,10 @@
 					infoWindowContent.appendChild(text);
 					infoWindowContent.appendChild(document.createElement('br'));
 
-					text.textContent = start;
-					infoWindowContent.appendChild(text);
+					var text2 = document.createElement('text');
+					text2.textContent = start + '-' + end;
+					infoWindowContent.appendChild(text2);
 
-					text.textContent = " to ";
-					infoWindowContent.appendChild(text);
-
-					text.textContent = end;
-					infoWindowContent.appendChild(text);
-
-					
-					
 					var marker = new google.maps.Marker({
 						position: point,
 						map: map
