@@ -131,7 +131,7 @@
 
 		}
 		.modal-content{
-			background-image:url("Textures/grunge2.jpg");
+			background-image:url("grunge2.jpg");
 			margin: 5px auto;
 			border: 1px solid #888;
 			width: 80%;
@@ -178,6 +178,8 @@
 		/*padding for all containers*/
 		.container{
 			padding: 16px;
+			/*background-image:url("grunge2.jpg"); */
+			
 		}
 		/*forgot password text*/
 		span.psw{

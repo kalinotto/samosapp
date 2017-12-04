@@ -1,4 +1,9 @@
-<?php include('registration.php'); ?>
+<?php 
+include('registration.php'); 
+include('login.php'); 
+session_start();
+unset($_SESSION['success']);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,16 +15,13 @@
 		</head>
 	
 	<body>
-	
-		
-
 		<button class="log" onclick="document.getElementById('id01').style.display='block'">Login</button>
 		<!--Modal-->
 		<div id="id01" class="modal">
 		<span onclick="document.getElementById('id01').style.display='none'"
 				class ="close" title="Close">&times;</span>
 				
-			<form class="modal-content animate" method="post" action="login.php">
+			<form class="modal-content" action="login.php" method="POST">
 			
 				<div class="container">
 					<h1 style="font-size:200%;text-align:left;margin-top:0;margin-left:0;margin-bottom:20px;">The Samos<span style="color:#70dbdb">App</span></h1>
@@ -39,9 +41,10 @@
 				</div>
 			</form>
 		</div>
+		
 	<!--Title-->
 		<h1>
-		The Samos<span style="color:#70dbdb">App</span>
+		the Samos<span style="color:#70dbdb;">App</span>
 		</h1>
 		
 	<!--NavBar-->
@@ -50,13 +53,9 @@
 			
 			<li><a href="Schedule.html">Scheddy</a></li>
 			
-			<?php if(isset($_SESSION['success'])): ?>
-				<?php echo $_SESSION['success'];
-					unset($_SESSION['success'];
-				?>
+			<?php if(isset($_SESSION['username'])): ?>
 				<li><a href="Report.html">Report Sale</a></li>
-
-			<?php  endif ?>
+			<?php endif; ?>
 		</ul>
 		
 	
