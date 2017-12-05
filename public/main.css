@@ -52,11 +52,16 @@
 		table.sched{
 			text-align:left;color:white;
 			font-family: 'Nobile',Helvetica,Arial,sans-serif;
-			font-size:85%;
-			line-height:115%;
+			font-size:150%;
+			line-height:155%;
 			margin-top:50px;
 			margin-left:50px;
+			border: 1px white;
+			border-collapse: collapse;
 			
+		}
+		th,td{
+			padding: 5px;	
 		}
 		/*form for the registration page*/
 		form.reg{
