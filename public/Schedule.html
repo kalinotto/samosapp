@@ -45,39 +45,87 @@
 			<li><a class="active" href="#">Scheddy</a></li>
 		</ul>
 		
-	<div>
-		<table class="main">
-			<tr>
-				<th>
-				TODO
-				</th>
-				<th>
-			Ahha backkghd
-				</th>
-				<th>
-				Fgh
-				</th>
-				<th>
-				to do as well
-				</th>
-			</tr>
-			<tr>
-				<th>
-				also needs doing
-				</th>
-				<th>
-				do here as well
-				</th>
-				<th>
-				to
-				</th>
-				<th>
-				do
-				</th>
-			</tr>
-		</table>
-	</div>
-
+		<table id="mainTable" class="sched"></table>
+	
+	<script>
+		//call a php file to create an xml file with all the marker information
+		function downloadUrl(url, callback){
+			var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest;
+				
+			request.onreadystatechange = function(){
+				if(request.readyState == 4){
+					callback(request);
+				}
+			};
+			request.open('GET', url, true);
+			request.send(null);
+		}
+		//create xml file, retrieve marker info
+		downloadUrl('getSales.php', function(data){
+				var xml = data.responseXML;
+				var markers = xml.documentElement.getElementsByTagName('marker');
+				var i;
+				var table="<tr><th onclick=\"sortTable(0)\">Seller Name</th><th onclick=\"sortTable(1)\">Location</th><th onclick=\"sortTable(2)\">Start Time</th><th onclick=\"sortTable(3)\">End Time</th><th>Notes</th>";
+				Array.prototype.forEach.call(markers, function(markerElem){
+					//load values into table rows
+					var name = markerElem.getAttribute('name');
+					var location = markerElem.getAttribute('location');
+					var start = markerElem.getAttribute('start');
+					var end = markerElem.getAttribute('end');
+					var note = markerElem.getAttribute('notes');
+					table += "<tr><td>" + name + "</td><td>" +
+						location + "</td><td>" + start + "</td><td>"
+						+ end + "</td><td>" + note + "</td></tr>";
+				});
+				document.getElementById("mainTable").innerHTML = table;	
+		});
+		
+		function sortTable(n){
+			var table, rows, switching, i, x, y, switchBool, dir, switchcount = 0;
+			table = document.getElementById("mainTable");
+			switching = true;
+			dir = "asc";
+			while(switching){
+				switching=false;
+				rows = table.getElementsByTagName("TR");
+				//loop through all rows
+				for(i = 1; i < (rows.length -1); i++){
+					switchBool = false;
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i+1].getElementsByTagName("TD")[n];
+					//bubble sort lol
+					if(dir=="asc"){
+						if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() ){
+							switchBool = true;
+							break;
+						}
+					
+					}
+					else if( dir == "desc"){
+						if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase() ) {
+							switchBool = true;
+							break;
+						}
+					}
+				}
+				if(switchBool){
+					//make a fliparoo
+					rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
+					switching = true;
+					switchcount++;
+				}
+				else{ //since no switch was done, switch the sorting direction to by descending
+					if(switchcount == 0 && dir == "asc"){
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
+		
+	</script>
+	
 	<!--Info/Credit Section-->
 	<div>
 		<table class = "main">
