@@ -75,8 +75,8 @@
 					var end = markerElem.getAttribute('end');
 					var note = markerElem.getAttribute('notes');
 					table += "<tr><td>" + name + "</td><td>" +
-						location + "</td><td>" + start + "</td><td>"
-						+ end + "</td><td>" + note + "</td></tr>";
+						location + "</td><td>" + start.slice(0,19) + "</td><td>"
+						+ end.slice(0,19) + "</td><td>" + note + "</td></tr>";
 				});
 				document.getElementById("mainTable").innerHTML = table;	
 		});
