@@ -63,9 +63,12 @@ include('registration.php');
 		
 	
 	<!--Map-->
-		<h3></h3>
-		<div id="map"></div>
+		<div class = "sidebar">
+		<h3 class="head">Welcome to the samos<span style="color:#70dbdb;">App</span></p>
+		<h3 class="info">This map displays all ongoing sales on the McGill campus. Click on a marker to see additional information.</h3>
+		</div>
 		
+		<div id="map"></div>
 		<script>
 		
 		function initMap(){
