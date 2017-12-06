@@ -65,7 +65,13 @@ include('registration.php');
 	<!--Map-->
 		<div class = "sidebar">
 		<h3 class="head">Welcome to the samos<span style="color:#70dbdb;">App</span></p>
-		<h3 class="info">This map displays all ongoing sales on the McGill campus. Click on a marker to see additional information.</h3>
+		<h3 class="info">This map displays all ongoing sales on the 
+		McGill campus. Click on a marker to see additional information.
+		<br/>
+		<br/>
+		If you would like to report a sale, click on the login button, then click register.
+		Once logged in you will see a "Report Sale" button.
+		</h3>
 		</div>
 		
 		<div id="map"></div>
