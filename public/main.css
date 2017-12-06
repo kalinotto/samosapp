@@ -40,29 +40,52 @@
 			height:400px;
 			margin-top:50px;
 		}
-		table.main{
-			text-align:left;color:white;
+		table.main {
+			text-align: left;
+			color:white;
 			font-family: 'Nobile',Helvetica,Arial,sans-serif;
-			font-size:85%;
-			line-height:115%;
+			font-size: 100%;
 			margin-top:50px;
 			margin-left:50px;
-
 		}
-		table.sched{
-			text-align:left;color:white;
+		table.sched {
+			text-align:left;
+			color:black;
 			font-family: 'Nobile',Helvetica,Arial,sans-serif;
-			font-size:150%;
-			line-height:155%;
+			font-size: 120%;
 			margin-top:50px;
 			margin-left:50px;
-			border: 1px white;
+			border: 3px solid black;
 			border-collapse: collapse;
-			
 		}
-		th,td{
-			padding: 5px;	
+		.sched th{
+			padding: 10px;
+			border: 2px solid black;
+			text-align: left;	
 		}
+		.sched td{
+			padding: 10px;
+			border: 2px solid black;
+		}
+		#mainTable th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #70dbdb;
+			color:black;
+		}
+		#mainTable tr:nth-child(even){
+			background-color: white;
+		}
+		#mainTable tr:nth-child(odd){
+			background-color: rgb(228, 228, 228);
+		}
+		#mainTable tr:hover {
+			background-color: rgb(156, 156, 156);
+			color:white;
+		}
+
+
 		/*form for the registration page*/
 		form.reg{
 			text-align:left;color:white;

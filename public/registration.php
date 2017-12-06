@@ -1,5 +1,7 @@
 <?php //connect to the db
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'db.php';
 
 $errors = array();
@@ -26,15 +28,17 @@ if(isset($_POST['register'])){ //when register button is pushed
 	}
 	//continue if no errors are raised by the dumb dumb users
 	if (count($errors) == 0){
-		//$passwordenc = md5($password); //encrypt password before storing
-		$sql = "INSERT INTO users (name, phash, email) VALUES ('$username', '$password', '$email')";
+		//encrypt password before storing
+		$phash = password_hash($password, PASSWORD_DEFAULT);
+		$sql = "INSERT INTO users (name, phash, email) VALUES ('$username', '$phash', '$email')";
 		//echo "$sql";
 		$stmt = $db->prepare($sql);
 		//$stmt->bind_param('sss', $username, $password, $email);
 		if ($stmt->execute() == TRUE ) {
 			$_SESSION['username'] = $username;
 			$_SESSION['success'] = "Successful login.";
-			header('location: index.html');
+			$_SESSION['uid'] = $db->query("SELECT uid FROM users WHERE name = '$username'")->fetch()['uid'];
+			header('location: index.php');
 		}
 	} else {
 		// idk are these things??

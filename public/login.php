@@ -1,21 +1,24 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require 'db.php';
 
 $uname = $_POST['uname'];
-$phash = $_POST['psw'];
+$password = $_POST['psw'];
 
-$sql = "SELECT name FROM Users WHERE name = '$uname' AND phash = '$phash'";
+$sql = "SELECT uid, phash FROM users WHERE name = '$uname'";
 $db = getDB();
 
 $stmt = $db->query($sql);
-if ($stmt->rowCount() != 1) {
-	// login failed
-	echo "Login failed. <a href='index.html'>Return</a>";
-} else {
-	$row = $stmt->fetch();
-	$_SESSION['username'] = $row->name;
+$row = $stmt->fetch();
+
+if (password_verify($password, $row['phash'])) {
+	$_SESSION['username'] = $uname;
 	$_SESSION['success'] = true;
-	header('location: index.html');
+	$_SESSION['uid'] = $row['uid']; 
+	header('location: index.php');
+} else {
+	echo "Login failed. <a href='index.php'>Return</a>";
 }
 ?>
