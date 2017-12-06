@@ -17,6 +17,21 @@
 			margin-left:20px;
 			
 		}
+		h3.head{
+			text-align:left;color:white;
+			font-family: 'Corben',Georgia,Times,serif;
+			font-size:150%;
+			padding-left:10px;
+			padding-top:5px;
+		}
+		h3.info{
+			font-family: 'Nobile',Helvetica,Arial,sans-serif;
+			text-align:left; color:white;
+			font-size:85%;
+			margin-right:5%;
+			float:right;
+			padding-left: 10px;
+		}
 		label{
 			text-align:left;color:white;
 			font-family: 'Nobile',Helvetica,Arial,sans-serif;
@@ -34,11 +49,14 @@
 			margin-top:-20px;
 		}
 		div.sidebar{
-			width:10%;float:right;
+			width:25%;
 			background-color:black;
 			opacity:0.8;
-			height:400px;
+			height:500px;
 			margin-top:50px;
+			margin-right:5%;
+			float:right;
+			
 		}
 		table.main {
 			text-align: left;
@@ -99,12 +117,12 @@
 			background-image:url("grunge2.jpg");
 		}
 		
-		#map {
+		#map{
 			height:500px;
-			width:90%;
-			margin-left:50px;
-			margin-top:50px;
+			width:67%;
+			margin-left:3%;
 			float:left;
+			
 		}
 		
 		ul.navbar{
