@@ -57,11 +57,22 @@ $uid = $_SESSION['uid'];
 			<li><a class="active" href="#">Report Sale</a></li>
 		</ul>
 	
-		<h2 class="side" style="margin-left: 50px;" >Click somewhere on the map to add a marker. Click on the marker to add sale information.</h2>
 	
 	<!--Map-->
-	
-		<div id="map" style="width:90%;"></div>
+		<div class = "sidebar">
+		<h3 class="info">
+		<br/>
+		Click anywhere on the map to place a marker.
+		Click on the marker to enter your sale information.
+		<br/>
+		<br/>
+		Once finished, hit save to report your sale. Go back to the main page
+		to see your new sale on the map, or go to the scheddy page to see your sale on the schedule.
+		</h3>
+		</div>
+		
+		<div id="map"></div>
+		
 		<div id="form" style="display:None;">
 			<table>
 				<tr><td>Seller Name:</td> <td><input type='text' id='name'/> </td> </tr>
